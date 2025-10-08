@@ -1,0 +1,4 @@
+import './routes/tipoMovimientoRoutes.js'
+import './routes/documentosRoutes.js'
+import './routes/usuariosRoutes.js'
+import './routes/categoriasRoutes.js'
