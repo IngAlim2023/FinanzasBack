@@ -56,7 +56,7 @@ export default class UsuariosController {
       return response.status(200).json({
         message: 'Autorizado',
         data: {
-          id: userExist.iddocumento,
+          id: userExist.id,
           names: userExist.nombres,
           email: userExist.correo,
           rol: userExist.rol,
@@ -101,7 +101,7 @@ export default class UsuariosController {
 
 const createToken = async (data: UsuariosData) => {
   const token = jwt.sign(
-    { id: data.iddocumento, names: data.nombres, rol: data.rol, email: data.correo },
+    { id: data.id, names: data.nombres, rol: data.rol, email: data.correo },
     env.get('APP_KEY'),
     {
       expiresIn: '7h',
