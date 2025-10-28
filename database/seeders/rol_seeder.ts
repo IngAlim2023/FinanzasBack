@@ -8,8 +8,7 @@ export default class extends BaseSeeder {
 
     await db.table('rols').insert([
       {id:1, rol:'Administrador'},
-      {id:2, rol:'Usuario'},
-      
+      {id:2, rol:'Usuario'},   
     ])
     console.log('Roles creados')
   }
