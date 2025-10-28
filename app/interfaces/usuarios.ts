@@ -3,10 +3,10 @@ import { DateTime } from "luxon";
 export interface UsuariosData{
     id?:number,
     iddocumento:number,
+    idrol?:number,
     nombres:string,
     apellidos:string,
     documento:string,
-    rol?:string,
     correo:string,
     password:string,
     created_at?:DateTime<boolean>,

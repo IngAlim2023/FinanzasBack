@@ -7,11 +7,11 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table.integer('iddocumento').notNullable().unsigned().references('id').inTable('documentos')
+      table.integer('idrol').notNullable().defaultTo(2).unsigned().references('id').inTable('rols')
 
       table.string('nombres', 90).notNullable()
       table.string('apellidos', 90).notNullable()
       table.string('documento', 100).notNullable()
-      table.string('rol', 50).notNullable().defaultTo('usuario')
       table.string('correo', 200).notNullable()
       table.string('password', 200).notNullable()
 

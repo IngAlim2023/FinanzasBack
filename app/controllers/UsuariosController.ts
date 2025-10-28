@@ -59,7 +59,7 @@ export default class UsuariosController {
           id: userExist.id,
           names: userExist.nombres,
           email: userExist.correo,
-          rol: userExist.rol,
+          rol: userExist.idrol,
         },
       })
     } catch (e) {
@@ -101,7 +101,7 @@ export default class UsuariosController {
 
 const createToken = async (data: UsuariosData) => {
   const token = jwt.sign(
-    { id: data.id, names: data.nombres, rol: data.rol, email: data.correo },
+    { id: data.id, names: data.nombres, rol: data.idrol, email: data.correo },
     env.get('APP_KEY'),
     {
       expiresIn: '7h',
