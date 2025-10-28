@@ -8,4 +8,7 @@ export default class UsuariosServices{
     async readUsuarioByCorreo(correo:string){
         return Usuario.query().where('correo', correo).first();
     }
+    async readUsuarioByDocumento(documento:string){
+        return Usuario.query().where('documento', documento).first();
+    }
 }

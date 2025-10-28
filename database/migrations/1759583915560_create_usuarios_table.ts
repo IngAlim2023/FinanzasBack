@@ -11,8 +11,8 @@ export default class extends BaseSchema {
 
       table.string('nombres', 90).notNullable()
       table.string('apellidos', 90).notNullable()
-      table.string('documento', 100).notNullable()
-      table.string('correo', 200).notNullable()
+      table.string('documento', 100).notNullable().unique()
+      table.string('correo', 200).notNullable().unique()
       table.string('password', 200).notNullable()
 
       table.timestamp('created_at')

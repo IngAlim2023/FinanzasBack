@@ -13,8 +13,12 @@ export default class UsuariosController {
       const { iddocumento, nombres, apellidos, documento, correo, password } = request.body()
 
       const userExist = await user.readUsuarioByCorreo(correo)
+      const docExist = await user.readUsuarioByDocumento(documento)
 
       if (userExist) {
+        return response.status(409).json({ message: 'El usuario ya esta registrado' })
+      }
+       if (docExist) {
         return response.status(409).json({ message: 'El usuario ya esta registrado' })
       }
 
@@ -95,6 +99,31 @@ export default class UsuariosController {
       return response
         .status(500)
         .json({ message: 'Error al verificar el token', error: error.message })
+    }
+  }
+  //Validacion del correo y el documento:
+  async verifyCorreo({params, response}:HttpContext){
+    try{
+      const {correo} = params;
+      const userExist = await user.readUsuarioByCorreo(correo)
+      if(userExist){
+        return response.status(200).json({message:'El usuario ya esta registrado'})
+      }
+      return response.status(200).json({message:'Correo valido'})
+    }catch(e){
+      return response.status(500).json({ message: 'Error Interno', error: e.message })
+    }
+  }
+  async verifyDocumento({params, response}:HttpContext){
+    try{
+      const {documento} = params;
+      const userExist = await user.readUsuarioByDocumento(documento)
+      if(userExist){
+        return response.status(200).json({message:'El usuario ya esta registrado'})
+      }
+      return response.status(200).json({message:'documento valido'})
+    }catch(e){
+      return response.status(500).json({ message: 'Error Interno', error: e.message })
     }
   }
 }
