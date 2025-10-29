@@ -4,6 +4,8 @@ import Documento from './documento.js'
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
 import Inversione from './inversione.js'
 import Rol from './rol.js'
+import Movimiento from './movimiento.js'
+import Categoria from './categoria.js'
 
 export default class Usuario extends BaseModel {
   @column({ isPrimary: true })
@@ -31,4 +33,10 @@ export default class Usuario extends BaseModel {
 
   @hasMany(()=>Inversione)
   declare inversiones: HasMany<typeof Inversione>
+  
+  @hasMany(()=>Movimiento)
+    declare movimientos: HasMany<typeof Movimiento>
+
+  @hasMany(()=>Categoria)
+   declare categoria: HasMany<typeof Categoria>
 }
